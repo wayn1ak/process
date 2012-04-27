@@ -6,3 +6,28 @@ resources upone object destruction.
 Screencasts of this project are available at
 http://youtu.be/lTB3kiltIuw
 http://youtu.be/L17bVZMxbw0
+
+=======================================================================================================
+Homework 6
+4/27/2012
+
+DISCUSSION:
+1)Is this a good use of Object Oriented design? Why or why not?
+Answers: Yes, this is a good use of object oriented design because we are modularizing the code which is a philosophy of Unix.
+
+2)There are different possible desired behaviors for what happens when the Process object goes out of scope:
+
+    The Process object waits until the child process has finished on its own (this has the effect of stalling the main program at the point at which the process object goes out of scope).
+
+    The Process object waits for a specified time period for the child to finish on its own and then sends a TERM or KILL signal.
+
+    The Process object sends a TERM or KILL signal imediately if the child process has not already finished at the time the Process destructor is called (when the object goes out of scope)
+
+    ...
+
+How might you modify your Process class to allow the programmer an easy way to use different destruction policies?
+
+Answer: The process will have if statements that would invoke a certain function when the program meets the requirement of that if statement. It'll be similar to a case statement in C++.
+
+3)How might you handle the case when a child process terminates before the parent process destroies it? I.e. how might the parent be signaled when a child terminates, and then read in any data it has written to its output.
+Answer: There could be a flag that exits and would update the parent.

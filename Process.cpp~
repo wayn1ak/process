@@ -36,10 +36,6 @@ Process::Process(const std::vector<char*>& args, bool verbose) :
     else if ( m_pid == 0 ) 
     {
 	/* child process */
-	
-	close(PARENT_WRITE);
-	close(PARENT_READ);
-
 	execvp(args[0], const_cast<char**>(&args[0]));
 	perror("Process execvp");
 	throw std::string("Process execvp");
